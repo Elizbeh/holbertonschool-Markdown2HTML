@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """
 This script Convert a markdown file to HTML format.
+
 Usage: ./markdown2html.py input.md output.html
+
 markdown2html.py reads a markdown file and writes an HTML file with the same content
 but formatted as HTML..
 """
 
-from os.path import exists
 from sys import argv, stderr
+from os.path import exists
 
 if __name__ == "__main__":
     
@@ -15,7 +17,7 @@ if __name__ == "__main__":
         print("Usage: ./markdown2html.py README.md README.html", file=stderr)
         exit(1)
     
-    if not exit:
+    if not exists(argv[1]):
         print(f"Missing {argv[1]}", file=stderr)
         exit(1)
         
@@ -24,7 +26,7 @@ if __name__ == "__main__":
             followline = file.readline()
             while followline:
                 title_hash = followline.count("#")
-                unordered = followline.strip("-").rstrip()
+                unordered = followline.strip("- ").rstrip()
                 ordered = followline.strip("* ").rstrip()
                 if title_hash != 0:
                     line = followline.lstrip('# ').lstrip('/n')
@@ -33,16 +35,18 @@ if __name__ == "__main__":
                     html.write('<ul>\n')
                     html.write(f"<li>{unordered}</li>\n")
                     file.readline()
-                    while followline.startswith("- "):
-                        html.write("<li>{followline.strip("- ").rstrip()}</'f'li>\n")
+                    while followline.startswith("-"):
+                        html.write(f'<li>{followline.strip("- ").rstrip()}</'
+                                   f'li>\n')
                         followline = file.readline()
-                        html.write("</ul>\n")
+                    html.write('</ul>\n')
                 if '*' in followline:
                     html.write('<ol>\n')
                     html.write(f'<li>{followline.strip("* ").rstrip()}</'f'li>\n')
                     file.readline()
-                    while followline.startswith("* "):
-                        html.write(f'<li>{followline.strip("* ").rstrip()}</'f'li>\n')
+                    while followline.startswith("*"):
+                        html.write(f'<li>{followline.strip("* ").rstrip()}</'
+                                   f'li>\n')
                         followline = file.readline()
                         html.write('</ol>\n')
                 else:
