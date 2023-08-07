@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 This script converts a markdown file to HTML format.
-Reads a markdown file and writes an HTML file with the same content but formatted as HTML.
+Reads a markdown file and writes an HTML file with
+the same content but formatted as HTML.
 """
 
 import os
@@ -27,6 +28,7 @@ def markdown_to_html(markdown_file, output_file):
     with open(output_file, "w") as f:
         f.write(html_content)
 
+
 if __name__ == "__main__":
     """ Check if the correct number of arguments is provided"""
     if len(sys.argv) < 3:
@@ -43,4 +45,3 @@ if __name__ == "__main__":
 
     """ Exit with a success status code"""
     sys.exit(0)
-
