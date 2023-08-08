@@ -15,8 +15,9 @@ def markdown_to_html(markdown_file, output_file):
     """
     if not os.path.exists(markdown_file):
         sys.stderr.write(f"Missing {markdown_file}\n")
-        sys.exit(1)
-
+        s
+        ys.exit(1)
+        
     """ Read the contents of the markdown file"""
     with open(markdown_file, "r") as f:
         markdown_content = f.read()
