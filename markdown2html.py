@@ -10,11 +10,17 @@ import sys
 import markdown
 
 class MarkdownToHTMLConverter:
+    """
+    """
     def __init__(self, markdown_file, output_file):
+        """
+        """
         self.markdown_file = markdown_file
         self.output_file = output_file
     
     def convert(self):
+        """
+        """
         if not os.path.exists(self.markdown_file):
             sys.stderr.write(f"Missing {self.markdown_file}\n")
             sys.exit(1)
