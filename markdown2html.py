@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""
-This script converts a markdown file to HTML format.
+"""This script converts a markdown file to HTML format.
+    Reads a markdown file and writes an HTML file
+    with the same content but formatted as HTML.
 """
 
 import os
